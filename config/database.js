@@ -5,3 +5,4 @@ module.exports = {
     //database: 'mongodb://admin:admin123@blood-pressure-rt-shard-00-00-1wrib.mongodb.net:27017,blood-pressure-rt-shard-00-01-1wrib.mongodb.net:27017,blood-pressure-rt-shard-00-02-1wrib.mongodb.net:27017/blood-pressure-rt?ssl=true&replicaSet=blood-pressure-rt-shard-0&authSource=admin&retryWrites=true',
     secret: 'yoursecret'
 }
+/////ANDRES
