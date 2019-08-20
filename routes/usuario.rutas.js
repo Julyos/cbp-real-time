@@ -1,9 +1,11 @@
 const express = require("express");
-const {index, guardar, modificar, eliminar} = require("./../controllers/usuario.controlador");
+const {index, guardar, modificar, eliminar, login,listar_tipo_usuario} = require("./../controllers/usuario.controlador");
 const router = express.Router();
 
 router.get("/usuario", index);
-router.post("/usuario", guardar);
+router.get("/usuario/tipousuario", listar_tipo_usuario);
+router.post("/usuario/login", login);
+router.post("/usuario/signup", guardar);
 router.put("/usuario/:id", modificar);
 router.delete("/usuario/:id", eliminar);
 

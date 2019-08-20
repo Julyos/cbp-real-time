@@ -6,7 +6,12 @@ let UsuarioSchema = new Schema({
     usuario: String,
     email: String,
     password: String,
-    date: Date
+    tipo_usuario : {  //Relacion con tipo_usuario
+        // type : Schema.Types.ObjectId,
+        type : String,
+        ref : "TipoUsuario"
+    },
+    date: String
 });
 
 module.exports = mongoose.model("Usuario", UsuarioSchema, "users");
