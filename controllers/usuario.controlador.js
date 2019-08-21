@@ -164,11 +164,28 @@ let listar_tipo_usuario = (req,res)=>{
     })
 }
 
+let find_tipo_usuario_byid = (req, res) => {
+
+    const id = req.params.id;
+    // Paciente.find({user: ObjectId(ci)})
+    Tipo_usuario.find({ _id: id })
+        .exec((err, data) => {
+            if (err)
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+
+            return res.json(data);
+        })
+}
+
 module.exports = {
     guardar,
     modificar,
     eliminar,
     index,
     login,
-    listar_tipo_usuario
+    listar_tipo_usuario,
+    find_tipo_usuario_byid
 }
