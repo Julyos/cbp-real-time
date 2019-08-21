@@ -1,4 +1,5 @@
 const Paciente = require("./../models/paciente.modelo");
+const Usuario = require("./../models/usuario.modelo");
 //Listar
 let index = (req, res) => {
     Paciente.find({})
@@ -23,6 +24,7 @@ let guardar = (req, res) => {
         cedula: body.cedula,
         nombres: body.nombres,
         apellidos: body.apellidos,
+        email: body.email,
         sexo: body.sexo,
         fecha_nacimiento: body.fecha_nacimiento,
         edad: body.edad,
@@ -39,17 +41,42 @@ let guardar = (req, res) => {
         lat: body.lat
     });
 
+    let usuario = new Usuario({
+        usuario: body.cedula,
+        email: body.email,
+        password: body.cedula,
+        tipo_usuario: '5cdb361ebe17e527b8eb5769',//id de paciente
+        date: new Date().toString()
+    });
+    // console.log("usuario:");
+    // console.log(usuario);
+
     paciente.save((err, paciente_nuevo) => {
         if (err)
             return res.status(500).json({
                 ok: false,
                 err
             });
-        return res.json({
-            ok: true,
-            paciente_nuevo
-        })
+    
+            usuario.save((err, usuario_nuevo) => {
+                if (err)
+                    return res.status(500).json({
+                        ok: false,
+                        err
+                    });
+                return res.json({
+                    ok: true,
+                    paciente_nuevo,
+                    usuario_nuevo
+                })
+            });
+
+        // return res.json({
+        //     ok: true,
+        //     paciente_nuevo
+        // })
     });
+    
 }
 
 

@@ -6,6 +6,7 @@ let PacienteSchema = new Schema({
     cedula: String,
     nombres: String,
     apellidos: String,
+    email: String,
     sexo: String,
     fecha_nacimiento: Date,
     edad: Number,
